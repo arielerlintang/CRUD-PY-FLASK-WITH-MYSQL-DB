@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tampil Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+<body>
+    <h1>Tampil Data</h1>
+    <div class="container">
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Jenis</th>
+                    <th>Deskripsi</th>
+                    <th>Foto</th>
+                    <th>Opsi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in data %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ p.nama_produk }}</td>
+                    <td>{{ p.deskripsi_produk }}</td>
+                    <td>{{ p.jenis_produk }}</td>
+                    <td><img src="{{ url_for('static',filename='img/'+p.foto_produk) }}" width="100" alt=""></td>
+                    <td>
+                        <a href="{{ url_for('edit', id=p.id_produk) }}" class="btn btn-warning btn-sm">Ubah</a>
+                        <a href="{{ url_for('hapus', id=p.id_produk) }}" class="btn btn-danger btn-sm" onclick="return confirm('Anda Yakin ?')">Hapus</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{url_for('tambah')}}" class="btn btn-primary">Tambah Data</a>
+    </div>
+
+</body>
+</html>

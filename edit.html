@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+<body>
+    
+    <div class="container">
+        <h1>Edit Data</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Nama Produk</label>
+                <input type="text" class="form-control" name="nama_produk" value="{{ data.nama_produk }}" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Jenis Produk</label>
+                <select name="jenis_produk" class="form-control" required>
+                    <option value="besar" {% if data.jenis_produk == 'besar' %} selected {% endif %}>besar</option>
+                    <option value="kecil" {% if data.jenis_produk == 'kecil' %} selected {% endif %}>kecil</option>
+                    
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Deskripsi Produk</label>
+                <textarea name="deskripsi_produk" class="form-control" required>{{ data.deskripsi_produk }}</textarea>
+            </div>
+            <div class="mb-3">
+                <td><img src="{{ url_for('static',filename='img/'+data.foto_produk) }}" width="100" alt=""></td>
+                <br>
+                <label class="form-label">Foto</label>
+                <input type="file" class="form-control" name="foto_produk">
+            </div>
+            <button class="btn btn-primary" name="simpan" type="submit">Simpan</button>
+        </form>
+    </div>
+
+</body>
+</html>

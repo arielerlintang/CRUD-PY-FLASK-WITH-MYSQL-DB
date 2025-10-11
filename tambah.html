@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+<body>
+    
+    <div class="container">
+        <h1>Tambah Data</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Nama Produk</label>
+                <input type="text" class="form-control" name="nama_produk" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Jenis Produk</label>
+                <select name="jenis_produk" class="form-control" required>
+                    <option value="besar">besar</option>
+                    <option value="kecil">kecil</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Deskripsi Produk</label>
+                <textarea name="deskripsi_produk" class="form-control" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Foto</label>
+                <input type="file" class="form-control" name="foto_produk" required>
+            </div>
+            <button class="btn btn-primary" name="simpan" type="submit">Simpan</button>
+        </form>
+    </div>
+
+</body>
+</html>
